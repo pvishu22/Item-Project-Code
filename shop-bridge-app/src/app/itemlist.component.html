@@ -1,0 +1,69 @@
+<div id="ItemList">
+  <div class="jumbotron">
+    <h1>Shop Bridge </h1>
+  </div>
+    <form #additem="ngForm" (ngSubmit)="onClickSubmit(additem);additem.resetForm();" novalidate>
+    <div class="form-row" style="height: 100px;">
+      <div class="form-group col-md-6">
+        <label for="inputName">Name</label>
+        <input type="Name" required class="form-control" id="inputName" name="Name" ngModel placeholder="Name" #Name="ngModel">
+        <div *ngIf="Name.hasError('required') && Name.touched">
+          Name is <strong>required</strong> field
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputDescription">Description</label>
+        <input type="Description" required class="form-control" id="inputDescription" name="Description"
+          placeholder="Description" ngModel #Description="ngModel">
+          <div *ngIf="Description.hasError('required') && Description.touched">
+            Description is <strong>required</strong> field
+          </div>
+      </div>
+    </div>
+    <div class="form-row" style="height: 100px;">
+      <div class="form-group col-md-6">
+        <label for="inputPrice">Price</label>
+        <input type="Price" required [pattern]="npattern" class="form-control" id="inputPrice" name="Price" placeholder="Price" ngModel #Price="ngModel">
+        <div *ngIf="Price.hasError('required') && Price.touched">
+          Price is <strong>required</strong> field
+        </div>
+        <div *ngIf="Price.hasError('pattern')">
+          Only Numbers are allowed in price
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="exampleFormControlFile1">Image</label>
+        <input type="file" class="form-control-file" name="ImageUrl" id="exampleFormControlFile1"
+          (change)="HandleFileInput($event.target.files)" ngModel>
+      </div>
+    </div>
+    <div class="form-row" style="height: 100px;">
+      <div class="form-group col-md-6"></div>
+      <div class="form-group col-md-6">
+        <button [disabled]='!additem.valid' class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Image</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items;let i=index">        
+        <td>{{ item.Name }}</td>
+        <td>{{ item.Description }}</td>
+        <td>{{ item.Price }}</td>        
+        <td><img style="width: 80px; height: 80px;" src="{{'data:image/jpg;base64,' + item.ImageUrl}}"/></td>
+        <td><button style="width: 68px;" class="btn-primary" (click)="deleteitem(item.Id)">Delete</button></td>       
+        <td><button style="width: 68px;" class="btn-primary" (click)="viewitem(item.Id)">View</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
