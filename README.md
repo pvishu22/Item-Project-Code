@@ -1,10 +1,4 @@
 
-GitHub Link for Angular Project
-https://github.com/pvishu22/Angular-Project/
-
-GitHub Link for Web API Project with test case project
-https://github.com/pvishu22/Web-Api-Project-with-test-cases
-
 
 List of Folders
 
@@ -13,7 +7,7 @@ List of Folders
 3. SQL Script (SQL Script for database and test cases) 
 4. WebApplication1 (WEB API Project and Unit Test Case Project)
 
-Note : SQL Script and Screenshot Folder is also in Angular Project GitHub Link
+
 
 Database Deployment Steps
 
@@ -30,7 +24,7 @@ Note: If ItemAPIProject is deployed on other than http://localhost:49784, then o
 
 
 
-To run Shop Bridge Angular Application
+To run Shop Bridge Application
 
 1. Open the shop-bridge-app folder in Visual Studio Code and run the project
 
